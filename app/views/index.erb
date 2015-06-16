@@ -1,1 +1,21 @@
-<h1>Home Page</h1>
+<% Song.all.each do |song| %>
+  <div class="row">
+    <div class="col-md-12" role="main">
+      <div class="song">
+        <div class="row">
+          <div class="col-md-3">
+            <img width="100%" src="https://placeholdit.imgix.net/~text?txtsize=14&txt=150%C3%97150&w=150&h=150" />
+          </div>
+          <div class="col-md-9">
+            <p class="title"><%= song.title %></p>
+            <p class="author">By: <%= song.author %></p>
+            <p class="description"><%= song.description %></p>
+            <p class="url"><a href="<%= song.url %>" target="_blank"><%= song.url %></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+

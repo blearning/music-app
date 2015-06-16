@@ -1,0 +1,12 @@
+/** Nav Bar **/
+$navigation-special-1-background-color: #ff5800;
+$navigation-special-1-background-color-hover :#d64a00;
+
+a.special-1{
+    
+    background: $navigation-special-1-background-color !important;
+
+    &:hover{
+      background:$navigation-special-1-background-color-hover !important;
+    }
+}

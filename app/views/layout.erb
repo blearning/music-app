@@ -37,8 +37,14 @@
     </div>
     <nav id="bs-navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Sign in</a></li>
-        <li><a class="special-1" href="#">Sign up</a></li>
+        <% if current_user %>
+          <li style="color:white; font-size:13px; font-weight: 400; padding-top: 15px;
+  padding-bottom: 15px;">Welcome <%= current_user.first_name %> <%= current_user.last_name %>, <a href="/sign-out" style="display:inline; background:none !important;">Sign Out</a></li>
+          <li><a class="special-1" href="add-new">Add New</a></li>  
+        <% else %>
+          <li><a href="sign-in">Sign in</a></li>
+          <li><a class="special-1" href="sign-up">Sign up</a></li>
+        <% end %>
       </ul>
     </nav>
   </div>
@@ -46,11 +52,15 @@
   <article>
     <div class="container">
     <div class="row">
-    <div class="col-md-9" role="main"><%= yield %></div>
-    <div class="col-md-3"><img width="100%" src="https://placeholdit.imgix.net/~text?txtsize=42&txt=450%C3%97450&w=450&h=450" alt="place holder" /></div>
+    <% if @layout == 'sidebar' %>
+      <div class="col-md-9" role="main"><%= yield %></div>
+      <div class="col-md-3"><img width="100%" src="https://placeholdit.imgix.net/~text?txtsize=42&txt=450%C3%97450&w=450&h=450" alt="place holder" /></div>
+    <% else %>
+      <div class="col-md-12" role="main"><%= yield %></div>
+    <% end %>
   </article>
 
-  <footer>
+  <footer style="clear:both;">
     © Copyright 2015, musicapp.com
   </footer>
 

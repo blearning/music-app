@@ -101,7 +101,7 @@ a {
   border-radius: 4px;
   }
 
-.title{
+.title, .form-signin-heading{
   font-size:20px;
 }
 .author,.description{
@@ -127,4 +127,9 @@ footer{
   padding:  20px;
   color:white;
 
+}
+
+/** SideBar **/
+input{
+  margin-bottom:15px;
 }

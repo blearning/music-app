@@ -1,10 +1,24 @@
-<% Song.all.each do |song| %>
+<% Song.order(id: :desc).each do |song| %>
   <div class="row">
     <div class="col-md-12" role="main">
       <div class="song">
         <div class="row">
           <div class="col-md-3">
             <img width="100%" src="https://placeholdit.imgix.net/~text?txtsize=14&txt=150%C3%97150&w=150&h=150" />
+
+            <% if current_user %>
+              <div align="center" style="margin-top:10px;">
+              <% if Upvote.where(users_id: current_user.id, songs_id: song.id).empty? %>
+              <a style="color:black;" href="/upvote?upvote=<%= song.id %>"><img src="/images/up-like.png" onmouseout="this.src='/images/up-like.png';" onmouseover="this.src='/images/down-like.png';" width="20" /></a>
+              <% else %>
+
+              <a style="color:black;" href="/upvote?downvote=<%= song.id %>"><img src="/images/down-like.png" onmouseout="this.src='/images/down-like.png';" onmouseover="this.src='/images/up-like.png';" width="20" /></a>
+              <% end %>
+              <span style="font-size:13px;">Total Likes: <%= song.upvotes.count %></span>
+              </div>
+            <% end %>
+
+
           </div>
           <div class="col-md-9">
             <p class="title"><%= song.title %></p>
@@ -17,5 +31,3 @@
     </div>
   </div>
 <% end %>
-
-
